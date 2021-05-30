@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Locations{% endblock %}</h2>
+{% endblock %}
+
+
+{% block content %}
+<form method="post" action="{{ url_for('location.add') }}">
+    <label for="location_id">Location Id</label>
+    <input name="location_id" id="location_id" value="{{ request.form['location_id'] }}" required>
+    <label for="location_name">Location Name</label>
+    <input name="location_name" id="location_name" value = "{{ request.form['location_name'] }}">
+    <button type="submit" class="btn btn-success" value="Save">Add Location</button>
+  </form>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Location ID</th>
+            <th scope="col">Location Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for location in locations %}
+
+        <tr>
+            <td>{{location['location_id']}}</td>
+            <td>
+                {{location['location_name']}}
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#modal_{{location['location_id']}}">Edit</button>
+
+                <div class="modal fade" id="modal_{{location['location_id']}}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <form method="POST" action="{{ url_for('location.edit') }}">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{ location['location_id'] }}
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <label for="location_name">Location Name</label>
+                                        <input name="location_name" id="location_name"
+                                            placeholder="{{location['location_name']}}">
+                                        <input name="location_id" value="{{location['location_id']}}" hidden>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary"> Save Changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}

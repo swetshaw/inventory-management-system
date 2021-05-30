@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Products{% endblock %}</h2>
+{% endblock %}
+
+
+{% block content %}
+<form method="post" action="{{ url_for('product.add') }}">
+    <label for="product_id">Product Id</label>
+    <input name="product_id" id="product_id" value="{{ request.form['product_id'] }}" required>
+    <label for="product_name">Product Name</label>
+    <input name="product_name" id="product_name" value = "{{ request.form['product_name'] }}">
+    <button class="btn btn-success" type="submit" value="Save">Add Product</button>
+  </form>
+
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+
+        <tr>
+            <td>{{product['product_id']}}</td>
+            <td>
+                {{product['product_name']}}
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#modal_{{product['product_id']}}">Edit</button>
+
+                <div class="modal fade" id="modal_{{product['product_id']}}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <form method="POST" action="{{ url_for('product.edit') }}">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{ product['product_id'] }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <label for="product_name">Product Name</label>
+                                        <input name="product_name" id="product_name"
+                                            placeholder="{{product['product_name']}}">
+                                        <input name="product_id" value="{{product['product_id']}}" hidden>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary"> Save Changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}

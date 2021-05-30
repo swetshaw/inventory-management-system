@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Move Products{% endblock %}</h2>
+{% endblock %}
+
+
+{% block content %}
+<form action="{{url_for('moveProduct.add')}}" method="POST">
+    <div class="row">
+        <div class="col">
+            <!-- <label for="mov_id">Movement ID</label> -->
+            <input name="mov_id" placeholder="enter movement id" value="{{ request.form['mov_id'] }}">
+            <!-- <label for="product_name">Choose Product</label> -->
+        </div>
+        <div class="col">
+            <input name="product_name" placeholder="Product Name" list="products"
+                value="{{ request.form['product_name'] }}">
+            <datalist id="products">
+                {% for product in products %}
+                <option value="{{product[1]}}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+
+        <div class="col">
+            <!-- <label for="from_location">From Location</label> -->
+            <input name="from_location" placeholder="from location" list="locations"
+                value="{{ request.form['from_location'] }}">
+            <datalist id="locations">
+                {% for location in locations %}
+                <option value="{{location[1]}}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="col">
+            <!-- <label for="to_location">To Location</label> -->
+            <input name="to_location" placeholder="to location" list="locations"
+                value="{{ request.form['to_location'] }}">
+            <datalist id="locations">
+                {% for location in locations %}
+                <option value="{{location[1]}}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="col">
+            <!-- <label for="qty">Quantity</label> -->
+            <input name="qty" placeholder="Enter Quantity" value="{{ request.form['qty'] }}">
+        </div>
+    </div>
+    <br>
+    <div class="row" id="btn-save-mp">
+        <button type="submit" class="btn btn-success" value="Save">Save</button>
+    </div>
+
+</form>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Movement ID</th>
+            <th scope="col">Timestamp</th>
+            <th scope="col">From Location</th>
+            <th scope="col">To Location</th>
+            <th scope="col">Product ID</th>
+            <th scope="col">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in all %}
+
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
