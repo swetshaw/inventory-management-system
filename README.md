@@ -24,3 +24,6 @@ flask init-db
 flask run
 ```
 ## Demo
+Following page opens up when `flask run` is executed. This is called the **Dashboard** page. It displays the product quantity in each location.
+
+![image](https://user-images.githubusercontent.com/26214362/120144652-f370a880-c1ff-11eb-906e-3ed4eb3bbbd1.png)
