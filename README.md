@@ -45,3 +45,9 @@ This page is similar to the products page where all the location of the inventor
  
 ![image](https://user-images.githubusercontent.com/26214362/120145428-20718b00-c201-11eb-9ae4-bb4f30b13405.png)
 
+#### Product Movement
+On this page, the user can move the product from one location to another. 
+- Features
+  - Move Product
+ 
+![image](https://user-images.githubusercontent.com/26214362/120145912-e81e7c80-c201-11eb-907b-8eb9f0ae986b.png)
