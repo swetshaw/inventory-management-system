@@ -14,12 +14,12 @@ bp = Blueprint('location', __name__, url_prefix='/location')
 @bp.route('/')
 def index():
     db = get_db()
-    # error = None
+    error = None
 
     locations = db.execute(
         'SELECT location_id, location_name FROM location').fetchall()
     if locations is None:
-        print("No locations added in database")
+        error = "No locations added in database"
     return render_template('location/index.html', locations=locations)
 
 

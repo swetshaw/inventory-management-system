@@ -14,12 +14,13 @@ bp = Blueprint('product', __name__, url_prefix='/product')
 @bp.route('/')
 def index():
     db = get_db()
-    # error = None
+    error = None
 
     products = db.execute(
         'SELECT product_id, product_name FROM product').fetchall()
     if products is None:
-        print("No products added in database")
+        error = "No products added in database"
+        flash(error)
     return render_template('product/index.html', products=products)
 
 

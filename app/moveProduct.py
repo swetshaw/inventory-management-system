@@ -47,8 +47,8 @@ def add():
 
         error = None
 
-        print("Inside edit")
-        print(to_loc, from_loc)
+        # print("Inside edit")
+        # print(to_loc, from_loc)
 
         try:
             prod_id_ = db. execute(
@@ -57,8 +57,8 @@ def add():
                 'SELECT location_id from location WHERE location_name = ?', (to_loc,)).fetchall()
             from_loc_id_ = db. execute(
                 'SELECT location_id from location WHERE location_name = ?', (from_loc,)).fetchall()
-            print(prod_id_)
-            print(to_loc_id_)
+            # print(prod_id_)
+            # print(to_loc_id_)
 
             prod_id = ''.join([str(p[0]) for p in prod_id_])
             to_loc_id = ''.join([str(t[0]) for t in to_loc_id_])
