@@ -36,3 +36,12 @@ This page shows all the products listed for the inventory.
   - Edit product
 
 ![image](https://user-images.githubusercontent.com/26214362/120145086-9de8cb80-c200-11eb-9a03-a0f720b1921e.png)
+
+#### Location
+This page is similar to the products page where all the location of the inventory is listed.
+- Features
+  - Add Location
+  - Edit Location
+ 
+![image](https://user-images.githubusercontent.com/26214362/120145428-20718b00-c201-11eb-9ae4-bb4f30b13405.png)
+
