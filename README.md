@@ -50,4 +50,5 @@ On this page, the user can move the product from one location to another.
 - Features
   - Move Product
  
-![image](https://user-images.githubusercontent.com/26214362/120145912-e81e7c80-c201-11eb-907b-8eb9f0ae986b.png)
+![image](https://user-images.githubusercontent.com/26214362/120146239-65e28800-c202-11eb-9c3d-7bab006eceb5.png)
+
